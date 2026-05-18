@@ -606,3 +606,16 @@ Regarding to flashing issues, please have a look at **[Flashing the device](doc/
 ### Docker support
 
 For older setups there is also docker environment available **[Docker support](doc/DOCKER_SUPPORT.md)**
+
+### Support info
+
+In case of errors or problems related to the sensor setup, there is the script collect_support_info.sh in the target folder, which can be copied to the Jetson, either manually or automatically by calling:
+<pre>
+./setup.sh --target
+</pre>
+On the Jetson you can call:
+<pre>
+sudo ./collect_support_info.sh
+</pre>
+This script will run different commands and create several trace files, which will be compressed into a tarball file.
+The tar.gz file can be attached to the support ticket. 
