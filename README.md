@@ -619,3 +619,7 @@ sudo ./collect_support_info.sh
 </pre>
 This script will run different commands and create several trace files, which will be compressed into a tarball file.
 The tar.gz file can be attached to the support ticket. 
+
+### ISP Tuning files
+
+We also have a variety of ISP tuning files for color sensors. Please contact the Vision Components team support@vision-components.com
