@@ -23,18 +23,18 @@
   * [Auvidea J20 on Devkit Jetson AGX Xavier or TX2](https://auvidea.eu/j20/) *(only connector 2+3)*
   * [Forecr DSADDON on Devkit Jetson Orin AGX](https://www.forecr.io/products/dsaddon-mipi-agx-6ch)
 * Supported board support packages
-  * [NVIDIA L4T 32.7.1](https://developer.nvidia.com/embedded/linux-tegra-r3271)
-  * [NVIDIA L4T 32.7.2](https://developer.nvidia.com/embedded/linux-tegra-r3272)
-  * [NVIDIA L4T 32.7.3](https://developer.nvidia.com/embedded/linux-tegra-r3273)
-  * [NVIDIA L4T 32.7.4](https://developer.nvidia.com/embedded/linux-tegra-r3274) *(only NVIDIA Jetson Nano)*
+  * [NVIDIA L4T 32.7.1](https://developer.nvidia.com/embedded/linux-tegra-r3271) *will be removed in 0.21.0*
+  * [NVIDIA L4T 32.7.2](https://developer.nvidia.com/embedded/linux-tegra-r3272) *will be removed in 0.21.0*
+  * [NVIDIA L4T 32.7.3](https://developer.nvidia.com/embedded/linux-tegra-r3273) *will be removed in 0.21.0*
+  * [NVIDIA L4T 32.7.4](https://developer.nvidia.com/embedded/linux-tegra-r3274) *(only NVIDIA Jetson Nano) will be removed in 0.21.0*
   * [NVIDIA L4T 32.7.5](https://developer.nvidia.com/embedded/linux-tegra-r3275) *(only NVIDIA Jetson Nano)*
-  * [NVIDIA L4T 35.1.0](https://developer.nvidia.com/embedded/jetson-linux-r351) *(only NVIDIA Jetson Xavier NX and AGX Xavier)*
-  * [NVIDIA L4T 35.2.1](https://developer.nvidia.com/embedded/jetson-linux-r3521) *(only NVIDIA Jetson Xavier NX, AGX Xavier and Orin NX)*
+  * [NVIDIA L4T 35.1.0](https://developer.nvidia.com/embedded/jetson-linux-r351) *(only NVIDIA Jetson Xavier NX and AGX Xavier) will be removed in 0.21.0*
+  * [NVIDIA L4T 35.2.1](https://developer.nvidia.com/embedded/jetson-linux-r3521) *(only NVIDIA Jetson Xavier NX, AGX Xavier and Orin NX) will be removed in 0.21.0*
   * [NVIDIA L4T 35.3.1](https://developer.nvidia.com/embedded/jetson-linux-r3531) *(only NVIDIA Jetson Xavier NX, AGX Xavier, Orin NX and Orin Nano)*
   * [NVIDIA L4T 35.4.1](https://developer.nvidia.com/embedded/jetson-linux-r3541) *(only NVIDIA Jetson Xavier NX, AGX Xavier, Orin NX and Orin Nano)*
   * [NVIDIA L4T 35.6.0](https://developer.nvidia.com/embedded/jetson-linux-r3560) *(only NVIDIA Jetson Xavier NX, AGX Xavier, Orin NX and Orin Nano)*
-  * [NVIDIA L4T 36.2.0](https://developer.nvidia.com/embedded/jetson-linux-r362) *(only NVIDIA Jetson Orin Nano and Orin NX)*
-  * [NVIDIA L4T 36.4.0](https://developer.nvidia.com/embedded/jetson-linux-r3640) *(only NVIDIA Jetson Orin Nano and Orin NX)*
+  * [NVIDIA L4T 36.2.0](https://developer.nvidia.com/embedded/jetson-linux-r362) *(only NVIDIA Jetson Orin Nano and Orin NX) will be removed in 0.21.0*
+  * [NVIDIA L4T 36.4.0](https://developer.nvidia.com/embedded/jetson-linux-r3640) *(only NVIDIA Jetson Orin Nano and Orin NX) will be removed in 0.21.0*
   * [NVIDIA L4T 36.4.3](https://developer.nvidia.com/embedded/jetson-linux-r3643) *(only NVIDIA Jetson Orin Nano and Orin NX)*
   * [NVIDIA L4T 36.4.4](https://developer.nvidia.com/embedded/jetson-linux-r3644) *(only NVIDIA Jetson Orin Nano, Orin NX and Orin AGX)*
   * [NVIDIA L4T 36.5.0](https://developer.nvidia.com/embedded/jetson-linux-r365) *(only NVIDIA Jetson Orin Nano, Orin NX and Orin AGX)*
