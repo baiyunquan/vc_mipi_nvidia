@@ -601,7 +601,8 @@ LABEL secondary
 
 ### Troubleshooting
 
-Regarding to flashing issues, please have a look at **[Flashing the device](doc/DEVICE_FLASHING.md)** 
+Regarding to flashing issues, please have a look at **[Flashing the device](doc/DEVICE_FLASHING.md)** <br>
+When facing issues with bit depths and frequencies, please have a look at **[Pixel clock adjustments](doc/PIX_CLK_HZ.md)** <br>
 
 ### Docker support
 
