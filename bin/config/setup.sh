@@ -107,6 +107,7 @@ boards=(
 "Auvidea JNX42 LM (https://auvidea.eu/product/70784)"
 "Auvidea J20 on Devkit Jetson AGX Xavier or TX2 (https://auvidea.eu/j20)"
 "Forecr DSADDON on Devkit Jetson AGX Orin (https://www.forecr.io/products/dsaddon-mipi-agx-6ch)"
+"NVIDIA Jetson Nano Developer Kit A02 + Waveshare IMX296"
 )
 
 board_keys=(
@@ -118,6 +119,7 @@ board_keys=(
 "Auvidea_JNX42"
 "Auvidea_J20"
 "Forecr_DSADDON"
+"NV_DevKit_Nano_A02"
 )
 
 choose_board() {
@@ -229,7 +231,7 @@ setup_driver() {
                 choose_bsp 0 1 2 3 4
                 ;;
         Nano|NanoSD)
-                choose_board 1 4 5
+                choose_board 1 4 5 8
                 choose_bsp 0 1 2 3 4
                 ;;
         XavierNX|XavierNXSD) 

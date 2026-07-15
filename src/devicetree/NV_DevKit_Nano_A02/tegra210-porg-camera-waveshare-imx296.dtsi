@@ -1,0 +1,15 @@
+// SPDX-License-Identifier: GPL-2.0
+
+#include "tegra210-camera-waveshare-imx296.dtsi"
+
+#define CAM1_PWDN TEGRA_GPIO(S, 7)
+
+/ {
+	host1x {
+		i2c@546c0000 {
+			imx296@1a {
+				reset-gpios = <&gpio CAM1_PWDN GPIO_ACTIVE_HIGH>;
+			};
+		};
+	};
+};

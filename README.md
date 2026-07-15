@@ -1,5 +1,14 @@
 # Vision Components MIPI CSI-2 driver for NVIDIA Jetson Nano, Xavier NX, AGX Xavier, TX2, Orin Nano, Orin NX and Orin AGX
 
+> **Jetson Nano A02 + Waveshare IMX296:** this fork also contains a standalone
+> GPL-2.0 tegracam driver and GitHub Actions build for the Waveshare IMX296
+> Global Camera (A) on JetPack 4.6.5 / L4T 32.7.5. See
+> [doc/IMX296_NANO_A02.md](doc/IMX296_NANO_A02.md). The workflow artifact
+> contains only the sensor module, its installer and documentation; it is not
+> a full flash image and does not replace the board DTB.
+> Run `sudo ./install_imx296_nano_a02.sh install --reboot` from the downloaded
+> artifact to install the module and enable it at boot.
+
 ![VC MIPI camera](doc/images/mipi_sensor_front_back.png)
 
 ## Version 0.20.0 ([History](VERSION.md))

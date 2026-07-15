@@ -1,0 +1,65 @@
+name: IMX296 Nano A02
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - "src/driver/imx296_waveshare.c"
+      - "src/devicetree/NV_DevKit_Nano_A02/**"
+      - "patch/kernel_Waveshare_IMX296_Nano_A02_32.7.5/**"
+      - "bin/ci/build_imx296_nano_a02.sh"
+      - "target/install_imx296_nano_a02.sh"
+      - ".github/workflows/imx296-nano-a02.yml"
+  pull_request:
+    paths:
+      - "src/driver/imx296_waveshare.c"
+      - "src/devicetree/NV_DevKit_Nano_A02/**"
+      - "patch/kernel_Waveshare_IMX296_Nano_A02_32.7.5/**"
+      - "bin/ci/build_imx296_nano_a02.sh"
+      - "target/install_imx296_nano_a02.sh"
+      - ".github/workflows/imx296-nano-a02.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-24.04
+    container: ubuntu:20.04
+    timeout-minutes: 120
+    steps:
+      - name: Install host dependencies
+        run: |
+          apt-get update
+          DEBIAN_FRONTEND=noninteractive apt-get install -y \
+            bc bison build-essential ca-certificates curl device-tree-compiler \
+            flex git kmod libssl-dev python2 qemu-user-static sudo wget xz-utils
+
+      - uses: actions/checkout@v4
+
+      - name: Restore NVIDIA downloads and toolchain
+        uses: actions/cache@v4
+        with:
+          path: |
+            build/Nano_32.7.5/downloads
+            build/toolchain
+          key: nano-r32.7.5-gcc7-${{ hashFiles('bin/config/L4T/R32.7.5.sh') }}
+
+      - name: Build IMX296 module only
+        env:
+          GITHUB_REPOSITORY: ${{ github.repository }}
+          GITHUB_SHA: ${{ github.sha }}
+        run: ./bin/ci/build_imx296_nano_a02.sh
+
+      - name: Verify artifact
+        run: |
+          test -s artifacts/imx296-waveshare-nano-a02-r32.7.5/imx296_waveshare.ko
+          modinfo artifacts/imx296-waveshare-nano-a02-r32.7.5/imx296_waveshare.ko | grep -q imx296_waveshare
+
+      - name: Upload deployment package
+        uses: actions/upload-artifact@v4
+        with:
+          name: imx296-waveshare-nano-a02-r32.7.5
+          path: artifacts/imx296-waveshare-nano-a02-r32.7.5
+          retention-days: 14
+          if-no-files-found: error

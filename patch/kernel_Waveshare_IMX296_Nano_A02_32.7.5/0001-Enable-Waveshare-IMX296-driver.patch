@@ -1,0 +1,41 @@
+From 0000000000000000000000000000000000000296 Mon Sep 17 00:00:00 2001
+From: baiyunquan <baiyunquan@users.noreply.github.com>
+Date: Wed, 15 Jul 2026 21:00:00 +0800
+Subject: [PATCH] Enable Waveshare IMX296 driver
+
+---
+ kernel/nvidia/drivers/media/i2c/Kconfig  | 10 ++++++++++
+ kernel/nvidia/drivers/media/i2c/Makefile |  1 +
+ 2 files changed, 11 insertions(+)
+
+diff --git a/kernel/nvidia/drivers/media/i2c/Kconfig b/kernel/nvidia/drivers/media/i2c/Kconfig
+index 197c4e6..296a020 100644
+--- a/kernel/nvidia/drivers/media/i2c/Kconfig
++++ b/kernel/nvidia/drivers/media/i2c/Kconfig
+@@ -96,1 +96,11 @@
++config VIDEO_IMX296_WAVESHARE
++	tristate "Waveshare IMX296 Global Camera support"
++	depends on I2C && VIDEO_V4L2 && VIDEO_V4L2_SUBDEV_API
++	---help---
++	  NVIDIA tegracam driver for the Sony IMX296LQR-C used by the
++	  Waveshare IMX296 Global Camera (A) on Jetson Nano A02.
++
++	  To compile this driver as a module, choose M here: the module
++	  will be called imx296_waveshare.
++
+ config VIDEO_OV10823
+
+diff --git a/kernel/nvidia/drivers/media/i2c/Makefile b/kernel/nvidia/drivers/media/i2c/Makefile
+index 579d3f6..02dbd76 100644
+--- a/kernel/nvidia/drivers/media/i2c/Makefile
++++ b/kernel/nvidia/drivers/media/i2c/Makefile
+@@ -14,6 +14,7 @@ obj-$(CONFIG_VIDEO_LC898212) += lc898212.o
+ obj-$(CONFIG_VIDEO_OV5693) += ov5693.o
+ obj-$(CONFIG_VIDEO_OV9281) += ov9281.o
+ obj-$(CONFIG_VIDEO_OV9281) += vc_mipi_camera.o vc_mipi_core.o vc_mipi_modules.o
++obj-$(CONFIG_VIDEO_IMX296_WAVESHARE) += imx296_waveshare.o
+ obj-$(CONFIG_VIDEO_OV10823) += ov10823.o
+ obj-$(CONFIG_VIDEO_OV23850) += ov23850.o
+ obj-$(CONFIG_I2C_IOEXPANDER_PCA9570) += pca9570.o
+-- 
+2.34.1

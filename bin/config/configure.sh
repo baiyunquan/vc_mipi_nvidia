@@ -46,6 +46,7 @@ DTSI_FILE_DICT+=(
         ["Auvidea_JNX30_XavierNX"]="tegra194-camera-vc-mipi-cam.dtsi"
         ["Auvidea_JNX42_XavierNX"]="tegra194-camera-vc-mipi-cam.dtsi"
                 ["NV_DevKit_Nano"]="tegra210-camera-vc-mipi-cam.dtsi" 
+            ["NV_DevKit_Nano_A02"]="tegra210-porg-camera-waveshare-imx296.dtsi"
             ["NV_DevKit_XavierNX"]="tegra194-camera-vc-mipi-cam.dtsi"
           ["Auvidea_JNX30D_TX2NX"]="tegra186-camera-vc-mipi-cam.dtsi"
 )
@@ -58,6 +59,7 @@ DTSI_DEST_DICT+=(
         ["Auvidea_JNX30_XavierNX"]="$KERNEL_SOURCE/hardware/nvidia/platform/t19x/jakku/kernel-dts/common"
         ["Auvidea_JNX42_XavierNX"]="$KERNEL_SOURCE/hardware/nvidia/platform/t19x/jakku/kernel-dts/common"
                 ["NV_DevKit_Nano"]="$KERNEL_SOURCE/hardware/nvidia/platform/t210/porg/kernel-dts/porg-platforms" 
+            ["NV_DevKit_Nano_A02"]="$KERNEL_SOURCE/hardware/nvidia/platform/t210/porg/kernel-dts/porg-platforms"
             ["NV_DevKit_XavierNX"]="$KERNEL_SOURCE/hardware/nvidia/platform/t19x/jakku/kernel-dts/common"
           ["Auvidea_JNX30D_TX2NX"]="$KERNEL_SOURCE/hardware/nvidia/platform/t18x/lanai/kernel-dts/common"
 )
@@ -117,6 +119,9 @@ case $VC_MIPI_SOM in
 Nano|NanoSD|Nano2GB)
         # Carrier board dependant settings
         case $VC_MIPI_BOARD in
+        NV_DevKit_Nano_A02)
+                PATCHES+=('kernel_Waveshare_IMX296_Nano_A02_32.7.5')
+                ;;
         Auvidea_JNX30|Auvidea_JNX42)
                 case $VC_MIPI_BSP in
                 32.7.1|32.7.2|32.7.3|32.7.4|32.7.5)

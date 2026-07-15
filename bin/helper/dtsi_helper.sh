@@ -19,7 +19,7 @@ function extract_and_set_key_from_config {
                 exit 1
         fi
 
-        if [[ "$VC_MIPI_BOARD" =~ ^"NV_DevKit" ]] 
+        if [[ "$VC_MIPI_BOARD" =~ ^"NV_DevKit" ]]
         then
                 DTSI_KEY=$VC_MIPI_BOARD
         else
@@ -138,4 +138,11 @@ function copy_dtsi_files {
         dest_dir="${DTSI_DEST_DICT[$DTSI_KEY]}"
         
         copy_dtsi_if_dest_exists $src_file $dest_dir
+
+	# The A02 integration has a board wrapper and a shared sensor graph.
+	if [[ "$DTSI_KEY" == "NV_DevKit_Nano_A02" ]]; then
+		copy_dtsi_if_dest_exists \
+			"$DT_CAM_DIR/$DTSI_KEY/tegra210-camera-waveshare-imx296.dtsi" \
+			"$dest_dir"
+	fi
 }

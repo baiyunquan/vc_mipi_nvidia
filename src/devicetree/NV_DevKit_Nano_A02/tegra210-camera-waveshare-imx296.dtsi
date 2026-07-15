@@ -1,0 +1,138 @@
+// SPDX-License-Identifier: GPL-2.0
+/* Waveshare IMX296 Global Camera (A), Jetson Nano A02 CAM0. */
+
+#include <dt-bindings/media/camera.h>
+#include <dt-bindings/platform/t210/t210.h>
+
+/ {
+	host1x {
+		vi_base: vi {
+			num-channels = <1>;
+			ports {
+				#address-cells = <1>;
+				#size-cells = <0>;
+				port@0 {
+					reg = <0>;
+					imx296_vi_in0: endpoint {
+						port-index = <0>;
+						bus-width = <2>;
+						remote-endpoint = <&imx296_csi_out0>;
+					};
+				};
+			};
+		};
+
+		csi_base: nvcsi {
+			num-channels = <1>;
+			#address-cells = <1>;
+			#size-cells = <0>;
+			channel@0 {
+				reg = <0>;
+				ports {
+					#address-cells = <1>;
+					#size-cells = <0>;
+					port@0 {
+						reg = <0>;
+						imx296_csi_in0: endpoint@0 {
+							port-index = <0>;
+							bus-width = <2>;
+							remote-endpoint = <&imx296_out0>;
+						};
+					};
+					port@1 {
+						reg = <1>;
+						imx296_csi_out0: endpoint@1 {
+							remote-endpoint = <&imx296_vi_in0>;
+						};
+					};
+				};
+			};
+		};
+
+		i2c@546c0000 {
+			waveshare_imx296: imx296@1a {
+				compatible = "waveshare,imx296";
+				reg = <0x1a>;
+				devnode = "video0";
+				sensor_model = "imx296_waveshare";
+				physical_w = "4.968";
+				physical_h = "3.726";
+				mclk = "extperiph1";
+				use_sensor_mode_id = "true";
+
+				mode0 {
+					mclk_khz = "54000";
+					num_lanes = "2";
+					tegra_sinterface = "serial_a";
+					phy_mode = "DPHY";
+					discontinuous_clk = "no";
+					dpcm_enable = "false";
+					cil_settletime = "0";
+					active_w = "1456";
+					active_h = "1088";
+					pixel_t = "bayer_rggb";
+					readout_orientation = "0";
+					line_length = "1100";
+					inherent_gain = "1";
+					mclk_multiplier = "2.2";
+					pix_clk_hz = "118800000";
+					gain_factor = "10";
+					min_gain_val = "0";
+					max_gain_val = "480";
+					step_gain_val = "1";
+					default_gain = "0";
+					min_hdr_ratio = "1";
+					max_hdr_ratio = "1";
+					framerate_factor = "1000000";
+					min_framerate = "1000000";
+					max_framerate = "60300000";
+					step_framerate = "1000";
+					default_framerate = "60000000";
+					exposure_factor = "1000000";
+					min_exp_time = "15";
+					max_exp_time = "1000000";
+					step_exp_time = "1";
+					default_exp_time = "10000";
+					embedded_metadata_height = "0";
+				};
+
+				ports {
+					#address-cells = <1>;
+					#size-cells = <0>;
+					port@0 {
+						reg = <0>;
+						imx296_out0: endpoint {
+							port-index = <0>;
+							bus-width = <2>;
+							remote-endpoint = <&imx296_csi_in0>;
+						};
+					};
+				};
+			};
+		};
+	};
+
+	tegra-camera-platform {
+		compatible = "nvidia, tegra-camera-platform";
+		num_csi_lanes = <2>;
+		max_lane_speed = <1500000>;
+		min_bits_per_pixel = <10>;
+		vi_peak_byte_per_pixel = <2>;
+		vi_bw_margin_pct = <25>;
+		max_pixel_rate = <240000>;
+		isp_peak_byte_per_pixel = <5>;
+		isp_bw_margin_pct = <25>;
+		modules {
+			module0 {
+				badge = "porg_front_IMX296";
+				position = "front";
+				orientation = "1";
+				drivernode0 {
+					pcl_id = "v4l2_sensor";
+					devname = "imx296_waveshare 6-001a";
+					proc-device-tree = "/proc/device-tree/host1x/i2c@546c0000/imx296@1a";
+				};
+			};
+		};
+	};
+};
